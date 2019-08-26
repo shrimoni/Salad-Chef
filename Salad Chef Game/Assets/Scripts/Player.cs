@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
     // Key Inputs name which will be varying depends on the player 
     public string hMovementKeyName = "Horizontal";
     public string vMovementKeyName = "Vertical";
+
+    public List<Vegetable> vegetables = new List<Vegetable>();
 
     // Rigidbody for physics
     private Rigidbody2D rb2D;
