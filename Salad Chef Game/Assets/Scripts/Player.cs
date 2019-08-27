@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
 
     public List<Vegetable> vegetables = new List<Vegetable>();
 
+    public bool isPlayerChoppingVegetable;
+    public bool canMove;
+
     // Rigidbody for physics
     private Rigidbody2D rb2D;
     private BoxCollider2D boxCollider2D;
@@ -27,15 +30,19 @@ public class Player : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        canMove = true;
     }
 
     private void Update()
     {
-        // Getting user inputs
-        // Calculating movement based on the user input
-        hMovement = Input.GetAxisRaw(hMovementKeyName);
-        vMovement = Input.GetAxisRaw(vMovementKeyName);
-        moveVelocity = new Vector2(hMovement, vMovement).normalized * playerMovementspeed;
+        if (canMove)
+        {
+            // Getting user inputs
+            // Calculating movement based on the user input
+            hMovement = Input.GetAxisRaw(hMovementKeyName);
+            vMovement = Input.GetAxisRaw(vMovementKeyName);
+            moveVelocity = new Vector2(hMovement, vMovement).normalized * playerMovementspeed;
+        }
     }
 
     private void FixedUpdate()

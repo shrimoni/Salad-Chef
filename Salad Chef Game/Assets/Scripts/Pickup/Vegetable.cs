@@ -2,8 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum VegetableType
+{
+    Onion,
+    Tomato,
+    Carrot,
+    Capsicum,
+    Cucumber,
+    Mushrooms
+}
+
 public class Vegetable : MonoBehaviour
 {
+    public VegetableType vegetableType;
+
     [SerializeField] private bool isPlayerReadyToPick;
     [SerializeField] private Player player;
     // Start is called before the first frame update
