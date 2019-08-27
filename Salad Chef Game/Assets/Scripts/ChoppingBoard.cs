@@ -1,10 +1,13 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChoppingBoard : MonoBehaviour
 {
     public bool isPlayerReadyToChop;
     public bool isPlayerChoppingVegetables;
+
+    public List<Vegetable> choppedVegetables = new List<Vegetable>();
 
     [SerializeField]private Player player;
 
@@ -65,6 +68,7 @@ public class ChoppingBoard : MonoBehaviour
         isPlayerChoppingVegetables = true;
         player.vegetables.Remove(vegetable);
         yield return new WaitForSeconds(5f);
+        choppedVegetables.Add(vegetable);
         isPlayerChoppingVegetables = false;
         Debug.Log("Vegetable Chopped: " + vegetable.vegetableType);
         player.canMove = true;

@@ -340,8 +340,8 @@ GameObject:
   - component: {fileID: 563194446}
   - component: {fileID: 563194445}
   m_Layer: 0
-  m_Name: SaladPlate
-  m_TagString: ChoppingBoard
+  m_Name: Plate
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,12 +355,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 563194444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146e6a43aa0c4be48a85a830e3fc490c, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d30efb10864374193899862920eedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerReadyToChop: 0
-  isPlayerChoppingVegetables: 0
-  player: {fileID: 0}
+  vegetable: {fileID: 0}
 --- !u!61 &563194446
 BoxCollider2D:
   m_ObjectHideFlags: 0
