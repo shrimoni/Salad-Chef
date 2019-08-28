@@ -2,18 +2,16 @@
 Consider you and your friend as an expert salad chefs, where there will be different customers with different salad requests. You and your friend will get scores if you guys deliver the right combination of salad to the corresponding customer.
 
 ## Features
-- Static top-down view level based feature added
-- Two player mechanics added
-- Different vegetables added
-- Vegetable Pickup system added
-- Vegetable chopping mechanics added
-- Plate functionality added
-- Dispose vegetables to trash can added
-- Customer spawn, salad request & customer dissatisfied functionality added
-- Implemented different booster/pickup systems
-- Score, Timer & Pickup Inventory added
-- Game Over & Game Start menu added
-- Winning messages
+- Static top-down view level
+- Two player mechanics
+- Different vegetables
+- Vegetable Pickup system
+- Vegetable chopping mechanics
+- Plate functionality where you can place vegetables
+- Dispose vegetables to trash
+- Customer spawn, salad request & customer dissatisfied
+- Boosters/pickup systems
+- Score, Timer & Pickup Inventory
 
 ## Features in future
 - High Scores & Leaderboard
