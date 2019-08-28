@@ -2,19 +2,21 @@
 
 public class Plate : MonoBehaviour
 {
-    public Vegetable vegetable;
+    public Vegetable vegetable; // Vegetable in the plate
 
     [SerializeField] private bool isPlayerReadyToPlaceVegetable;
+    [SerializeField] private TextMesh itemsInPlateDesc; // description of the vegetable placed in the plate
 
     private Player player;
 
     private void Update()
     {
-        if (isPlayerReadyToPlaceVegetable && Input.GetKeyDown(KeyCode.G))
+        // If Player places vegetable in the plate
+        if (isPlayerReadyToPlaceVegetable && Input.GetKeyDown(player.placeKey))
         {
             if (player.vegetables.Count > 0)
             {
-                PlaceVegetable(player.vegetables[0]);
+                PlaceVegetableOnPlate(player.vegetables[0]); // place the firstmost vegetable
             }
             else
             {
@@ -22,9 +24,10 @@ public class Plate : MonoBehaviour
             }
         }
 
-        if (isPlayerReadyToPlaceVegetable && Input.GetKeyDown(KeyCode.P))
+        // If Player picks up the vegetable from the plate
+        if (isPlayerReadyToPlaceVegetable && Input.GetKeyDown(player.pickupKey))
         {
-            PickUp();
+            PickVegetableFromPlate();
         }
     }
 
@@ -34,6 +37,7 @@ public class Plate : MonoBehaviour
         {
             isPlayerReadyToPlaceVegetable = true;
             player = collision.GetComponent<Player>();
+            player.UpdateDialogBox("Place \nVeggie: " + player.placeKey);
         }
     }
 
@@ -42,17 +46,21 @@ public class Plate : MonoBehaviour
         if (collision.tag == "Player")
         {
             isPlayerReadyToPlaceVegetable = false;
+            player.HideDialogBox();
             player = null;
         }
     }
 
-    void PlaceVegetable(Vegetable veg)
+    // Places the Vegetable on the table
+    private void PlaceVegetableOnPlate(Vegetable veg)
     {
         vegetable = veg;
+        itemsInPlateDesc.text = veg.name;
         player.vegetables.Remove(vegetable);
+        player.UpdatePickedUpItems();
     }
 
-    private void PickUp()
+    private void PickVegetableFromPlate()
     {
         if (player == null)
             return;
@@ -62,6 +70,7 @@ public class Plate : MonoBehaviour
             Debug.Log("Picking Up Me...");
             player.vegetables.Add(vegetable);
             vegetable = null;
+            itemsInPlateDesc.text = "";
         }
 
     }

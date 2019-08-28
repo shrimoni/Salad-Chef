@@ -4,20 +4,21 @@ using UnityEngine;
 
 public enum VegetableType
 {
-    Onion,
-    Tomato,
-    Carrot,
-    Capsicum,
-    Cucumber,
-    Mushrooms
+    Onion = 0,
+    Tomato = 1,
+    Carrot = 2,
+    Capsicum = 3,
+    Cucumber = 4,
+    Mushrooms = 5
 }
 
 public class Vegetable : MonoBehaviour
 {
-    public VegetableType vegetableType;
+    public VegetableType vegetableType; // type of the vegetable
 
     [SerializeField] private bool isPlayerReadyToPick;
     [SerializeField] private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,8 @@ public class Vegetable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerReadyToPick && Input.GetKeyDown(KeyCode.P))
+        // Check if player is ready to pickup
+        if (isPlayerReadyToPick && Input.GetKeyDown(player.pickupKey))
         {
             PickUp();
         }
@@ -40,6 +42,8 @@ public class Vegetable : MonoBehaviour
         {
             isPlayerReadyToPick = true;
             player = collision.GetComponent<Player>();
+            player.UpdateDialogBox(this.name + "\nPickup: "+player.pickupKey.ToString());
+
         }
     }
 
@@ -49,10 +53,12 @@ public class Vegetable : MonoBehaviour
         {
             Debug.Log(collision.name);
             isPlayerReadyToPick = false;
+            player.HideDialogBox();
             player = null;
         }
     }
 
+    // Method which allows the player to pickup the vegetable
     private void PickUp()
     {
         if (player == null)
@@ -60,8 +66,9 @@ public class Vegetable : MonoBehaviour
 
         if(player.vegetables.Count < 2)
         {
-            Debug.Log("Picking Up Me...");
+            Debug.Log("Picking Up: "+this.name);
             player.vegetables.Add(this);
+            player.UpdatePickedUpItems();
         }
 
     }
