@@ -9,7 +9,7 @@ Consider you and your friend as an expert salad chefs, where there will be diffe
 - Vegetable chopping mechanics
 - Plate functionality where you can place vegetables
 - Dispose vegetables to trash
-- Customer spawn, salad request & customer dissatisfied
+- Customer spawn, salad request & customer dissatisfication
 - Boosters/pickup systems
 - Score, Timer & Pickup Inventory
 
